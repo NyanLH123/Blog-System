@@ -1,0 +1,87 @@
+/* custom.css — minimal theme + small animations */
+
+/* Variables (simple) */
+:root {
+  --brand: #0d6efd;
+  --muted: #6c757d;
+  --card-bg: #ffffff;
+  --surface: #f8f9fa;
+  --radius: 12px;
+}
+
+/* Global */
+body {
+  background: var(--surface);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* Cards */
+.card {
+  border-radius: var(--radius);
+  transition: transform .18s ease, box-shadow .18s ease, opacity .2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+}
+
+/* post card */
+.post-card .card-body {
+  padding: 1rem;
+}
+.post-card .meta {
+  color: var(--muted);
+  font-size: .875rem;
+}
+
+/* Buttons micro-animations */
+.btn {
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+.btn:active { transform: translateY(1px) scale(.997); }
+
+/* Subtle fade-in for content */
+.fade-in {
+  animation: fadeIn .28s ease both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Skeleton loader */
+.skeleton {
+  background: linear-gradient(90deg, rgba(0,0,0,0.04) 25%, rgba(0,0,0,0.06) 50%, rgba(0,0,0,0.04) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+  border-radius: .5rem;
+  min-height: 1rem;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Modal tweaks */
+.modal-content {
+  border-radius: 10px;
+}
+
+/* Responsive cards: posts grid */
+.post-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+/* Utility */
+.hidden { display: none !important; }
+
+/* Accessibility focus */
+:focus {
+  outline: 3px solid rgba(13,110,253,0.12);
+  outline-offset: 2px;
+}
